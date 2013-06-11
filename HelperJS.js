@@ -71,10 +71,12 @@ HelperJS.prototype._createBottomElement = function(eHelpElement) {
 };
 
 HelperJS.prototype._createOverlayElement = function(nHeight, nWidth, nTop, nLeft) {
-	var eElement = $("<div class='overlay-body'></div>");
+	var eElement = $("<div></div>");
 	eElement.css("height", nHeight + "px");
 	eElement.css("width", nWidth + "px");
 	eElement.offset({ top: nTop, left: nLeft });
+
+	eElement = this._addOverlayStyling(eElement);
 
 	$("body").append(eElement);
 
@@ -85,3 +87,11 @@ HelperJS.prototype._createOverlayElement = function(nHeight, nWidth, nTop, nLeft
 
 	return eElement;
 };
+
+HelperJS.prototype._addOverlayStyling = function(eElement) {
+	eElement.css("opacity", "0.8");
+	eElement.css("background-color", "#CCC");
+	eElement.css("position", "fixed");
+	eElement.css("z-index", "9999999");
+	return eElement;
+}
