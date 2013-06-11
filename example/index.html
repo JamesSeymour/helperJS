@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>helperJS Example</title>
+	<script type="text/javascript" src="lib/JQuery.js"></script>
+	<script type="text/javascript" src="../HelperJS-min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+	<div id="helpButton">Help me!</div>
+	<div>Test1</div>
+	<div>Test2</div>
+	<div>Test3</div>
+	<div>Test4</div>
+	<div class="myElement" helper-bind="true">Test5</div>
+	<div>Test6</div>
+	<div>Test7</div>
+	<div>Test8</div>
+	<div>Test9</div>
+	<div>Test10</div>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var oHelperJS = new HelperJS("helpButton");
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.overlay-body{
+  	opacity:0.8;
+    background-color:#ccc;
+    position:fixed;
+    z-index:999999;
+}
+
+.myElement {
+	width:100px;
+	height:50px;
+}
