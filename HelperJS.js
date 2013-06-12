@@ -23,6 +23,9 @@ HelperJS.prototype.addOverlay = function() {
 	this.eTopElement = this._createTopElement(eHelpElement);
 	this.eRightElement = this._createRightElement(eHelpElement);
 	this.eBottomElement = this._createBottomElement(eHelpElement);
+
+	var eHelperElementDescription = $(eHelpElement).find('[helper-description]');
+	this.eHelpDescription = this._createDescription(eHelpElement, eHelperElementDescription.attr("helper-description"))
 };
 
 HelperJS.prototype.removeOverlay = function() {
@@ -31,6 +34,7 @@ HelperJS.prototype.removeOverlay = function() {
 	this.eTopElement.remove();
 	this.eRightElement.remove();
 	this.eBottomElement.remove();
+	this.eHelpDescription.remove();
 };
 
 HelperJS.prototype._createLeftElement = function(eHelpElement) {
@@ -85,6 +89,24 @@ HelperJS.prototype._createOverlayElement = function(nHeight, nWidth, nTop, nLeft
 		self.removeOverlay();
 	});
 
+	return eElement;
+};
+
+HelperJS.prototype._createDescription = function(eParentElement, sDescription) {
+	var nDistanceFromTop = eParentElement[0].offsetTop;
+	var nDistanceFromLeft = eParentElement[0].offsetLeft + eParentElement.width();
+
+	var eElement = $("<div>" + sDescription + "</div>");
+
+	eElement.offset({ top: nDistanceFromTop + 50, left: nDistanceFromLeft + 50 });
+	eElement.css("position", "fixed");
+	eElement.css("z-index", "9999999");
+	eElement.css("background-color", "#FFF");
+	eElement.css("padding", "15px");
+	eElement.css("border", "1px solid #BBB");
+	eElement.css("border-radius", "10px");
+
+	$("body").append(eElement);
 	return eElement;
 };
 

@@ -1,11 +1,14 @@
+* {
+	font-family: arial,sans-serif;
+	font-size: 12px;
+}
+
 .table div{
 	width: 250px;
 	height: 30px;
 	border: 1px solid #EEE;
 	text-align: center;
 	line-height: 30px;
-	font-family: arial,sans-serif;
-	font-size: 12px;
 }
 
 .table div:nth-child(even){
