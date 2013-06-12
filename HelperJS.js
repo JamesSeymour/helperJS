@@ -34,22 +34,22 @@ HelperJS.prototype.removeOverlay = function() {
 };
 
 HelperJS.prototype._createLeftElement = function(eHelpElement) {
-	var nDistanceFromLeft = eHelpElement.position().left;
+	var nDistanceFromLeft = eHelpElement[0].offsetLeft;
 	var nWindowHeight = $(window).height();
 
 	return this._createOverlayElement(nWindowHeight, nDistanceFromLeft, 0, 0);
 };
 
 HelperJS.prototype._createTopElement = function(eHelpElement) {
-	var nDistanceFromTop = eHelpElement.position().top;
-	var nDistanceFromLeft = eHelpElement.position().left;
+	var nDistanceFromTop = eHelpElement[0].offsetTop;
+	var nDistanceFromLeft = eHelpElement[0].offsetLeft;
 
 	return this._createOverlayElement(nDistanceFromTop, eHelpElement.width(), 0, nDistanceFromLeft);
 };
 
 HelperJS.prototype._createRightElement = function(eHelpElement) {
-	var nDistanceFromTop = eHelpElement.position().top;
-	var nDistanceFromLeft = eHelpElement.position().left;
+	var nDistanceFromTop = eHelpElement[0].offsetTop;
+	var nDistanceFromLeft = eHelpElement[0].offsetLeft;
 	var nWindowWidth = $(window).width();
 	var nWindowHeight = $(window).height();
 
@@ -60,8 +60,8 @@ HelperJS.prototype._createRightElement = function(eHelpElement) {
 };
 
 HelperJS.prototype._createBottomElement = function(eHelpElement) {
-	var nDistanceFromTop = eHelpElement.position().top;
-	var nDistanceFromLeft = eHelpElement.position().left;
+	var nDistanceFromTop = eHelpElement[0].offsetTop;
+	var nDistanceFromLeft = eHelpElement[0].offsetLeft;
 	var nWindowHeight = $(window).height();
 
 	var nDistanceFromBottom = nDistanceFromTop + eHelpElement.height();
