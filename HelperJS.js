@@ -26,6 +26,8 @@ HelperJS.prototype.addOverlay = function() {
 
 	var eHelperElementDescription = $(eHelpElement).find('[helper-description]');
 	this.eHelpDescription = this._createDescription(eHelpElement, eHelperElementDescription.attr("helper-description"))
+
+	this.eLine = this._createLine(eHelpElement[0].offsetLeft + eHelpElement.width(), eHelpElement[0].offsetTop + (eHelpElement.height() / 2), this.eHelpDescription[0].offsetLeft + (this.eHelpDescription.width() / 2) ,this.eHelpDescription[0].offsetTop);
 };
 
 HelperJS.prototype.removeOverlay = function() {
@@ -35,6 +37,7 @@ HelperJS.prototype.removeOverlay = function() {
 	this.eRightElement.remove();
 	this.eBottomElement.remove();
 	this.eHelpDescription.remove();
+	this.eLine.remove();
 };
 
 HelperJS.prototype._createLeftElement = function(eHelpElement) {
@@ -98,13 +101,15 @@ HelperJS.prototype._createDescription = function(eParentElement, sDescription) {
 
 	var eElement = $("<div>" + sDescription + "</div>");
 
-	eElement.offset({ top: nDistanceFromTop + 50, left: nDistanceFromLeft + 50 });
+	eElement.offset({ top: nDistanceFromTop + 75, left: nDistanceFromLeft + 100 });
 	eElement.css("position", "fixed");
 	eElement.css("z-index", "9999999");
-	eElement.css("background-color", "#FFF");
-	eElement.css("padding", "15px");
-	eElement.css("border", "1px solid #BBB");
-	eElement.css("border-radius", "10px");
+	eElement.css("border", "1px solid #FFF");
+	eElement.css("border-bottom-style", "none");
+	eElement.css("border-left-style", "none");
+	eElement.css("border-right-style", "none");
+	eElement.css("color", "#FFF");
+	eElement.css("padding-top", "5px");
 
 	$("body").append(eElement);
 	return eElement;
@@ -112,8 +117,38 @@ HelperJS.prototype._createDescription = function(eParentElement, sDescription) {
 
 HelperJS.prototype._addOverlayStyling = function(eElement) {
 	eElement.css("opacity", "0.8");
-	eElement.css("background-color", "#CCC");
+	eElement.css("background-color", "#444");
 	eElement.css("position", "fixed");
-	eElement.css("z-index", "9999999");
+	eElement.css("z-index", "9999998");
+	return eElement;
+};
+
+HelperJS.prototype._addLineStyling = function(eElement) {
+	eElement.css("border", "1px solid #FFF");
+	eElement.css("border-bottom-style", "none");
+	eElement.css("border-left-style", "none");
+	eElement.css("position", "fixed");
+	eElement.css("z-index", "9999998");
+	return eElement;
+};
+
+HelperJS.prototype._createLine = function(x1,y1, x2,y2){
+	var nHeight = y2 - y1;
+	var nWidth = x2 - x1;
+
+	var eElement = $("<div></div>");
+	eElement.css("height", nHeight + "px");
+	eElement.css("width", nWidth + "px");
+	eElement.offset({ top: y1, left: x1 });
+
+	eElement = this._addLineStyling(eElement);
+
+	$("body").append(eElement);
+
+	var self = this;
+	eElement.bind('click', function() {
+		self.removeOverlay();
+	});
+
 	return eElement;
 }
