@@ -24,8 +24,7 @@ HelperJS.prototype.addOverlay = function() {
 	this.eRightElement = this._createRightElement(eHelpElement);
 	this.eBottomElement = this._createBottomElement(eHelpElement);
 
-	var eHelperElementDescription = $(eHelpElement).find('[helper-description]');
-	this.eHelpDescription = this._createDescription(eHelpElement, eHelperElementDescription.attr("helper-description"))
+	this.eHelpDescription = this._createDescription(eHelpElement, eHelpElement.attr("helper-description"))
 
 	this.eLine = this._createLine(eHelpElement[0].offsetLeft + eHelpElement.width(), eHelpElement[0].offsetTop + (eHelpElement.height() / 2), this.eHelpDescription[0].offsetLeft + (this.eHelpDescription.width() / 2) ,this.eHelpDescription[0].offsetTop);
 };
